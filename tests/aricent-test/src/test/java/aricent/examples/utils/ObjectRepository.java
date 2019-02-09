@@ -10,18 +10,18 @@ public class ObjectRepository {
 /**
 *Login page Web Elements 
 **/
-  WebElement  userName= driver.findElement(By.id(" "));
-  WebElement  password= driver.findElement(By.id(" "));
-  WebElement  clickOnLogin= driver.findElement(By.id(" "));
+  WebElement  userName= driver.findElement(By.id("okta-signin-username"));
+  WebElement  password= driver.findElement(By.class("okta-signin-password"));
+  WebElement  clickOnSignIn= driver.findElement(By.xpath("//*[@class='okta-signin-password']//following-sibling::*[1]"));
   
   public WebElement getUserName(){
     return userName;
   }
   public WebElement getPassword(){
-    return userName;
+    return password;
   }
-  public WebElement getLogin(){
-    return userName;
+  public WebElement getSignIn(){
+    return clickOnSignIn;
   }
   
   
