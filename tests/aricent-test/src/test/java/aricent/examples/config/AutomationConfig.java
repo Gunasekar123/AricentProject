@@ -10,8 +10,7 @@ public void load(){
     File currentDirectory = new File(new File("").getAbsolutePath());
     WORKING_DIR = currentDirectory.getAbsolutePath();
     if (!(new File(WORKING_DIR + "\\src\\test\\java\\aricent\\examples\\resources\\Environments\\Sample.properties").exists())) {
-      System.out
-          .println("ERROR:There is no environment property file named Nightly.Please specify the correct environment");
+      System.out.println("ERROR:There is no environment property file.Please specify the correct environment");
     }
     properties.load(new FileInputStream(new File(WORKING_DIR
         + "\\src\\test\\java\\aricent\\examples\\resources\\Environments\\Sample.properties")));
