@@ -1,0 +1,22 @@
+
+
+
+apply plugin: 'java'
+dependencies {
+    compile 'org.seleniumhq.selenium:selenium-java:3.10.0'
+    compile  'org.testng:testng:6.11'
+    
+}
+sourceSets{
+    test{
+        java.srcDir 'src/test/java'
+        compileClasspath += configurations.testConfig + configurations.testNG
+    }
+}
+task aricentTest (type:Jar) {
+    from sourceSets.test.output 
+    archiveName = 'aricent-test.jar'
+    destinationDir = file("build/jars")
+    appendix = 'test'
+    
+}
