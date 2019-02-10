@@ -1,3 +1,4 @@
+package aricent.examples.utils;
 import org.openqa.selenium.WebDriver;
 public abstract BaseClass extends seleniumMethods{
   
@@ -80,7 +81,12 @@ public abstract BaseClass extends seleniumMethods{
   public void loadLoginPage(WebDriver driver){
   driver.get(url);
   SeleniumMethods sel=new SeleniumMethods(driver);
+    try{
   sel.waitForLoad(10);
+    }
+    catch(Exception e){
+      System.out.println(e.getMessage());
+    }
   }
 }
     
