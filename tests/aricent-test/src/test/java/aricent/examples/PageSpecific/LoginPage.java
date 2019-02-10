@@ -6,8 +6,14 @@ public class LoginPage extends SeleniumMethods{
  this.driver=driver;
  }
  ObjectRepository obj=new ObjectRepository(driver);
- public void doSignIn(String userName,String password){
+ public LoginPage doSignIn(String userName,String password){
     type(obj.getUserName(),userName);
     type(obj.getPassword(),password); 
     click(obj.getSignIn());
+  return this;
+}
+ public LoginPage validateSucessfullSignIn(){
+  
+  return this;
+ }
 }
