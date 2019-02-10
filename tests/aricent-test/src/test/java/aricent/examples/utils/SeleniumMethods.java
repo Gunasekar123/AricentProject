@@ -23,7 +23,7 @@ public void waitForLoad(WebDriver driver,long timeOutInSeconds) {
                 ExpectedCondition<Boolean>() {
                     public Boolean apply(WebDriver driver) {
                         return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
-                    }
+                     }
                 };
         WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
         wait.until(pageLoadCondition);
