@@ -1,5 +1,5 @@
 import org.openqa.selenium.WebDriver;
-public abstract BaseClass {
+public abstract BaseClass extends seleniumMethods{
   
   private String url=null;
   private String browserType=null;
@@ -79,6 +79,7 @@ public abstract BaseClass {
   **/
   public void loadLoginPage(WebDriver driver){
   driver.get(url);
+  super.waitForLoad(10);
   }
 }
     
