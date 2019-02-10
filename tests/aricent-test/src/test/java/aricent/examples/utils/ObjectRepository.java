@@ -1,3 +1,6 @@
+package aricent.examples.utils;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver.By;
 
 public class ObjectRepository {
   
@@ -23,8 +26,6 @@ public class ObjectRepository {
   public WebElement getSignIn(){
     return clickOnSignIn;
   }
-  
-  
-  
+ 
 }
   
