@@ -7,6 +7,9 @@ dependencies {
     compile  'org.testng:testng:6.11'
     
 }
+repositories {
+    mavenCentral()
+}
 sourceSets{
     test{
         java.srcDir 'src/test/java'
