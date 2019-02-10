@@ -3,7 +3,8 @@ public abstract BaseClass {
   
   private String url=null;
   private String browserType=null;
-  private WebDriver driver=null;
+  private WebDriver driverDefault=null;
+  private WebDriver driverCustom=null;
   
   abstract getLogName();
   
@@ -15,37 +16,63 @@ public abstract BaseClass {
   browserType=config.getBrowserType();
   
   /**
-  *This is launch browser based on the browser type 
+  *This will launch browser based on the browser type 
   *Browser type will get from properties file 
+  *Because it is private constructor it will allow to create instance directly
   **/
-  private BaseClass launchBrowser(){
+  private BaseClass (){
     if(browserType.equals("firefox")){
        System.setProperties("webdriver.gecko.driver","path of gecko exe file");
-       driver=new FirefoxDriver();
+       driverDefault=new FirefoxDriver();
     }
-    else if(browserType.equals("firefox")){
-       System.setProperties("webdriver.gecko.driver","path of gecko exe file");
-       WebDriver=new FirefoxDriver();
+    else if(browserType.equals("chrome")){
+       System.setProperties("webdriver.chrome.driver","path of chrome exe file");
+       driverDefault=new ChromeDriver();
     }
-    else if(browserType.equals("firefox")){
-       System.setProperties("webdriver.gecko.driver","path of gecko exe file");
-       WebDriver=new FirefoxDriver();
+    else if(browserType.equals("ie")){
+       System.setProperties("webdriver.gecko.driver","path of ie exe file");
+       driverDefault=new InternetExplorerDriver();
     }
     else{
       System.out.println("Invalid browser type , can not launch browser");
     }
-    return this;
   }
-  public WebDriver getWebDriver(){
-    return driver;
+  /**
+  *This is to launch driver based on browser type that needs for test 
+  *This will not use browser that set in the properties file
+  **/
+  private BaseClass (String setBrowser){
+    if(setBrowser.equals("firefox")){
+       System.setProperties("webdriver.gecko.driver","path of gecko exe file");
+       driverCustom=new FirefoxDriver();
+    }
+    else if(setBrowser.equals("chrome")){
+       System.setProperties("webdriver.chrome.driver","path of chrome exe file");
+       driverCustom=new ChromeDriver();
+    }
+    else if(setBrowser.equals("ie")){
+       System.setProperties("webdriver.gecko.driver","path of ie exe file");
+       driverCustom=new InternetExplorerDriver();
+    }
+    else{
+      System.out.println("Invalid browser type , can not launch browser");
+    }
   }
-  public BaseClass loadDefaultPage(){
-  driver.get(url);
-  return this;
+  /**
+  *It will create webdriver object for browser type set in the properties file
+  **/
+  public synchronized WebDriver getWebDriver(){
+   if(driverDefault==null){
+    new BaseClass();
+   }
+    return driverDefault;
   }
-  public BaseClass loadDefaultPage(String urlToLoad){
-  driver.get(urlToLoad);
-  return this;
+  /**
+  *It will create webdriver object for browser that test pass 
+  **/
+  public synchronized WebDriver getWebDriver(String setBrowser){
+    new BaseClass(setBrowser);
+    return driverCustom;
   }
   
 }
