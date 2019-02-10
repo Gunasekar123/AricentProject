@@ -25,7 +25,7 @@ public void setup(){
     @Test
     public void testLottery(){
     //Creating json object body
-    JSONObject js=generateJsonReq("lottoId",5);
+    String js=generateJsonReq("lottoId",5);
     //Posting request
     JsonPath jp=given().spec(rsb.build()).contentType("").body(js).expect().statusCode(201)
     .when().post(apiUrl).body().jsonPath;
@@ -78,7 +78,7 @@ public void setup(){
 
     }
     
-    public JSONObject generateJsonReq(String input ,int val){
+    public String generateJsonReq(String input ,int val){
     Map<String, Object> data = new HashMap<String, Object>();
     data.put( input, val );
     JSONObject json = new JSONObject();
