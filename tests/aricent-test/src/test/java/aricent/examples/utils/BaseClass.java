@@ -79,7 +79,8 @@ public abstract BaseClass extends seleniumMethods{
   **/
   public void loadLoginPage(WebDriver driver){
   driver.get(url);
-  super.waitForLoad(10);
+  SeleniumMethods sel=new SeleniumMethods(driver);
+  sel.waitForLoad(10);
   }
 }
     
