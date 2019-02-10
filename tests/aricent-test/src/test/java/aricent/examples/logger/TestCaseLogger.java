@@ -7,8 +7,8 @@ public class TestCaseLogger {
     Class clasz=null;
     private org.apache.logging.log4j.Logger logger;
  
-  private TestCaseLogger(Class clazz){
-        logger = Logger.getLogger(clazz);
+  private TestCaseLogger(String logName){
+        logger = Logger.getLogger(logName);
     }
     
 
@@ -22,16 +22,20 @@ return logger;
 
 public void warn(String msg)
  {
-  logger.warn("Warning Message : "+ msg);
+  logger.warn( msg);
   }
 
   public void error(String msg)
   {
-    logger.error("Error message : "+ msg);
+    logger.error(msg);
    }
   public void debug(String msg)
    {
-      logger.debug("Debug Message : "+ msg);
+      logger.debug(msg);
+    }
+     public void info(String msg)
+   {
+      logger.info(msg);
     }
 
 }
