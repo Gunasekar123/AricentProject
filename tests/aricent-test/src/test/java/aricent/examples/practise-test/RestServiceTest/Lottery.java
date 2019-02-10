@@ -18,17 +18,15 @@ private List<Integer> expectedNumbers=new ArrayList<>(Arrays.asList(34,23,5));
 public void setup(){
 
  rsb = new RequestSpecBuilder()
-                .addHeader("Authorization", "ABCDE12345ABCDE")
-                .addHeader("value", "true")
-                .addHeader("encode","false");
+                .addHeader("Authorization", "ABCDE12345ABCDE");
     }
     @Test
     public void testLottery(){
     //Creating json object body
     String js=generateJsonReq("lottoId",5);
     //Posting request
-    JsonPath jp=given().spec(rsb.build()).contentType("").body(js).expect().statusCode(201)
-    .when().post(apiUrl).body().jsonPath;
+    JsonPath jp=given().spec(rsb.build()).cookie("value", "true").cookie("encode", "false").contentType("application/json")
+     .body(js).expect().statusCode(201).when().post(apiUrl).body().jsonPath;
     //Printing json response
     System.out.print(jp.prettyPrint());
     //Getting lotteryId
