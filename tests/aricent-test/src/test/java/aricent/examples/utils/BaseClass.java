@@ -74,7 +74,12 @@ public abstract BaseClass {
     new BaseClass(setBrowser);
     return driverCustom;
   }
-  
+  /**
+  *Load login page url which is getting from properties file 
+  **/
+  public void loadLoginPage(WebDriver driver){
+  driver.get(url);
+  }
 }
     
  
