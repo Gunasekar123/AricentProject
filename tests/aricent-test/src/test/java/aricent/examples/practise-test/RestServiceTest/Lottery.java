@@ -47,7 +47,7 @@ public void setup(){
       for (Map.Entry<String, List<Integer>> entry : map.entrySet()) {
       String key = entry.getKey();
       //Retreving list from map using key
-      List<Integer> value=entry.get(key);
+      List<Integer> value=entry.getValue();
       //checking for winnerId =23 
       if(value.size()==1&&value.get(0)==23){
       winerId=true;
