@@ -1,3 +1,11 @@
+package aricent.examples.config;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Properties;
+import java.io.FileInputStream;
+
+
 public class AutomationConfig{
 
 private String applicationUrl=null;
@@ -5,7 +13,7 @@ private String applicationUrl=null;
 private String browserType=null;
 
 
-public void load(){
+public void load() throws Exception{
  Properties properties = new Properties();
     File currentDirectory = new File(new File("").getAbsolutePath());
     WORKING_DIR = currentDirectory.getAbsolutePath();
@@ -27,4 +35,12 @@ this.applicationUrl=applicationUrl;
 public void setBrowserType(String browserType){
 this.browserType=browserType;
 }
+ public String getAppilicationUrl(){
+return applicationUrl;
+}
+
+public String getBrowserType(){
+return browserType;
+}
+ 
 }
