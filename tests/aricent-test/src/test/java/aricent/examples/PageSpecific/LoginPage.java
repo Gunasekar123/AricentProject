@@ -12,8 +12,17 @@ public class LoginPage extends SeleniumMethods{
     click(obj.getSignIn());
   return this;
 }
- public LoginPage validateSucessfullSignIn(){
-  
+ public LoginPage validateSucessfullSignIn(String expectedPageUrl,String messageToValidate){
+  if(driver.getCurrentUrl().equals(expectedPageUrl))
+     {
+       String pageSource = driver.getPageSource();
+       System.out.println(pageSource);
+       Assert.assertTrue(pageSource.contains(messageToValidate));
+     }
+     else
+     {
+         System.out.println("Not navigated to the correct page");
+     }
   return this;
  }
 }
