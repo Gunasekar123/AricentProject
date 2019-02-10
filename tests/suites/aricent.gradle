@@ -1,16 +1,13 @@
 apply plugin: 'java'
 
 
-task rest_services_test(type: EMTest,dependsOn:omcSetup){
+
+task rest_services_test(){
     options.suiteXmlBuilder().suite('name': 'aricent-testing') {
-        test('name': 'integration-services-testing'){
+        test('name': 'interview-test'){
             classes([:]){
-            
-            }
-            }
-            }
-    task aricent(){
-    apply from: getAbsoluteFilePath(project.configurations.omctfConfig,"omctf_taskprocessor")
-        rest_services_test.mustRunAfter(omcUpgradeDataPopulation)
-        omcTeardown.mustRunAfter(rest_services_test)
-}
+             'class'('name':'aricent.examples.tests.LoginTest')
+          }
+      }
+  }
+
