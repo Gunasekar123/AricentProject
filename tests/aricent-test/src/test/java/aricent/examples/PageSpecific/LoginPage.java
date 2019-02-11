@@ -29,6 +29,7 @@ public class LoginPage extends SeleniumMethods{
  public LoginPage validateSucessfullSignIn(String expectedPageUrl,String messageToValidate){
   if(driver.getCurrentUrl().equals(expectedPageUrl))
      {
+       waitForLoad(driver,10);
        String pageSource = driver.getPageSource();
        System.out.println(pageSource);
        Assert.assertTrue(pageSource.contains(messageToValidate));
